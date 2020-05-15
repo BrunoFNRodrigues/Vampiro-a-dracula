@@ -9,4 +9,8 @@ LARGURA = 1100
 ALTURA = 720
 FPS = 60 # Taxa de atualização em frames por segundo
 
+#Comandos
+#Movimentação (W,A,S,D)
+#Interagir (E)
+
 # Tamanho dos elementos
