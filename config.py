@@ -13,4 +13,12 @@ FPS = 60 # Taxa de atualização em frames por segundo
 #Movimentação (W,A,S,D)
 #Interagir (E)
 
-# Tamanho dos elementos
+#=====Tamanho dos elementos=====
+
+#Heroi
+HEROI_ALTURA = 100
+HEROI_LARGURA = 50
+
+#Drácula
+DRACULA_ALTURA = 150
+DRACULA_LARGURA = 75
