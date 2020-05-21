@@ -59,4 +59,28 @@ def battle_screen(window):
                         #Define a ação de fugir
                         if event.key == pygame.k_4:
                             state = DONE
+
+        #======Atuliza o estado do jogo=======
+        #Atualiza os status dos personagens
+        all_sprites.update()
+
+        #====Gera saídas=====
+        window.fill(BLACK) #Preenche com a cor preta
+        window.blit(assets[BACKGROUND], (0, 0))
+        #Desenhando os personagens
+        all_sprites.draw(window)
+
+        #Desenha as barras de vidaq
+        text_surface = assets[SCORE_FONT].render(chr(9829) * hero_health, True, RED)
+        text_rect = text_surface.get_rect()
+        text_rect.bottomleft = (10, ALTURA - 10)
+        window.blit(text_surface, text_rect)
+
+        text_surface = assets[SCORE_FONT].render(chr(9829)) * boss_health, True, BLACK)
+        text_rect = text_surface.get_rect()
+        text_rect.bottomright = (10, 10 - ALTURA)
+        window.blit(text_surface, text_rect)
+
+        pygame.display.update() # Atuliza o novo frame
+
                         
