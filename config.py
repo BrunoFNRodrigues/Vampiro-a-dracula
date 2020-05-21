@@ -3,6 +3,7 @@ from os import path
 # Define a pasta das imagens e audios.
 IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
 SOM_DIR = path.join(path.dirname(__file__), 'assets', 'som')
+FNT_DIR = path.join(path.dirname(__file__), 'assets', 'fnt')
 
 # Dados de tela.
 LARGURA = 1100
@@ -22,3 +23,7 @@ HEROI_LARGURA = 50
 #Drácula
 DRACULA_ALTURA = 150
 DRACULA_LARGURA = 75
+
+#Cores
+BLACK = (0,0,0)
+RED = (255,0,0)
