@@ -31,5 +31,6 @@ RED = (255,0,0)
 #Estados de jogo
 INIT = 0
 GAME = 1
-OVER = 2
-QUIT = 3
+BATTLE = 2
+OVER = 3
+QUIT = 4
