@@ -1,6 +1,6 @@
 import pygame
-import config
-import assets
+from config import *
+from assets import *
 
 
 class Hero(pygame.sprite.Sprite):
@@ -11,8 +11,16 @@ class Hero(pygame.sprite.Sprite):
         self.image = assets[HEROI_IMG]
         self.rect = self.image.get_rect()
         self.rect.left = LARGURA / 4
-        self.rect.top = 10 
+        self.rect.top = 20
         self.groups = groups
-        self.assets = assets
 
+class Boss(pygame.sprite.Sprite):
+    def __init__(self, assets):
+       # Construindo o sprit
+       pygame.sprite.Sprite.__init__(self)
 
+       self.image = assets[DRACULA_IMG]
+       self.rect = self.imagem.get_rect()
+       self.rect.right = LARGURA*3 / 4
+       self.rect.top = 20
+       
