@@ -20,8 +20,7 @@ def battle_screen(window):
 
         WIN = 0
         PLAYING = 1
-        DAMAGING = 2
-        LOSE = 3
+        LOSE = 2
         state = PLAYING
 
         keys_down = {}
@@ -63,6 +62,19 @@ def battle_screen(window):
         #======Atuliza o estado do jogo=======
         #Atualiza os status dos personagens
         all_sprites.update()
+
+        if state == PLAYING:
+            #Verifica se player morreu
+            if hero_health == 0:
+                #Toca o som de morte
+                assets[DYING_SOUND].play()
+                state = LOSE
+            #Verifica se chefão morreu
+            if boss_health == 0:
+                #Toca o som de morte
+                assets[DYING_SOUND].play()
+                state = WIN
+                
 
         #====Gera saídas=====
         window.fill(BLACK) #Preenche com a cor preta
