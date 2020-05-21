@@ -27,3 +27,9 @@ DRACULA_LARGURA = 75
 #Cores
 BLACK = (0,0,0)
 RED = (255,0,0)
+
+#Estados de jogo
+INIT = 0
+GAME = 1
+OVER = 2
+QUIT = 3
