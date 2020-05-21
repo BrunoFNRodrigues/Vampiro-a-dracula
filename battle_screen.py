@@ -96,4 +96,5 @@ def battle_screen(window):
 
     pygame.display.update() # Atuliza o novo frame
 
+    return state
                     

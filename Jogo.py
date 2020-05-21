@@ -12,7 +12,7 @@ pygame.mixer.init()
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Vampiro a Dracula')
 
-state = INIT
+state = BATTLE
 while state != QUIT:
     if state == BATTLE:
         state = battle_screen(window)
