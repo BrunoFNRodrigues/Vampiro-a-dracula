@@ -14,7 +14,7 @@ DAMAGING_SOUND = 'damaging_sound'
 def load_assets():
     assets = {}
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'cthulhu.jpg')).convert()
-    assets[HEROI_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Heroi.jpg')).convert_alpha()
+    assets[HEROI_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Heroi.png')).convert_alpha()
     assets[HEROI_IMG] = pygame.transform.scale(assets['heroi_img'], (HEROI_LARGURA, HEROI_ALTURA))
     assets[DRACULA_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Dracula.jpg')).convert_alpha()
     assets[DRACULA_IMG] = pygame.transform.scale(assets['dracula_img'], (DRACULA_LARGURA, DRACULA_ALTURA))
