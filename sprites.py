@@ -20,7 +20,7 @@ class Boss(pygame.sprite.Sprite):
        pygame.sprite.Sprite.__init__(self)
 
        self.image = assets[DRACULA_IMG]
-       self.rect = self.imagem.get_rect()
+       self.rect = self.image.get_rect()
        self.rect.right = LARGURA*3 / 4
        self.rect.top = 20
        

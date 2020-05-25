@@ -21,10 +21,10 @@ def load_assets():
     assets[SCORE_FONT] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2P.ttf'), 28)
     
     #Carrega os sons do jogo
-    pygame.mixer.music.load(os.path.join(SOM_DIR, 'Tank!'))
+    pygame.mixer.music.load(os.path.join(SOM_DIR, 'tgfcoder-FrozenJam-SeamlessLoop.ogg'))
     pygame.mixer.music.set_volume(0.4)
-    assets[DYING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'morte.mp3'))
-    assets[DAMAGING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'dano.mp3'))
+    assets[DYING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
+    assets[DAMAGING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
     
 
     return assets

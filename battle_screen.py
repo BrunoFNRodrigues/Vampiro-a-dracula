@@ -4,6 +4,7 @@ import pygame
 import random
 from config import *
 from assets import *
+from sprites import *
 
 def battle_screen(window):
     # Variveis de ajuste de velocidade
@@ -11,22 +12,28 @@ def battle_screen(window):
 
     assets = load_assets()
 
+    all_sprites = pygame.sprite.Group()
+    groups = {}
+    groups['all_sprites'] = all_sprites
+    
     #Criando o jagador
     player = Hero(groups, assets)
     all_sprites.add(player)
     #Criando o Boss
-    boss = Boss(groups, assets)
+    boss = Boss(assets)
     all_sprites.add(boss)
     
     WIN = 0
     PLAYING = 1
     LOSE = 2
+    DONE = 3
+    result = 0
     state = PLAYING
 
     keys_down = {}
     hero_health = 100
     boss_health = 300
-    guard = True
+    guard = False
 
     #======Ciclo principal=======
     pygame.mixer.music.play(loops=-1)
@@ -56,45 +63,45 @@ def battle_screen(window):
                         if hero_health<100:
                             hero_health += 5+random.randint(0,10)
                     #Define a ação de fugir
-                    if event.key == pygame.k_4:
+                    if event.key == pygame.K_4:
                         state = DONE
+                        result = LOSE
 
-    #======Atuliza o estado do jogo=======
+    #======Atualiza o estado do jogo=======
     #Atualiza os status dos personagens
-    all_sprites.update()
+        all_sprites.update()
 
-    if state == PLAYING:
-        #Verifica se player morreu
-        if hero_health == 0:
-            #Toca o som de morte
-            assets[DYING_SOUND].play()
-            state = LOSE
-        #Verifica se chefão morreu
-        if boss_health == 0:
-            #Toca o som de morte
-            assets[DYING_SOUND].play()
-            state = WIN
+        if state == PLAYING:
+            #Verifica se player morreu
+            if hero_health == 0:
+                #Toca o som de morte
+                assets[DYING_SOUND].play()
+                state = LOSE
+            #Verifica se chefão morreu
+            if boss_health == 0:
+                #Toca o som de morte
+                assets[DYING_SOUND].play()
+                state = WIN
             
 
-    #====Gera saídas=====
-    window.fill(BLACK) #Preenche com a cor preta
-    window.blit(assets[BACKGROUND], (0, 0))
-    #Desenhando os personagens
-    all_sprites.draw(window)
+        #====Gera saídas=====
+        window.fill(BLACK) #Preenche com a cor preta
+        window.blit(assets[BACKGROUND], (0, 0))
+        #Desenhando os personagens
+        all_sprites.draw(window)
 
-    #Desenha as barras de vida
-    #Heroi
-    text_surface = assets[SCORE_FONT].render(chr(9829) * hero_health, True, RED)
-    text_rect = text_surface.get_rect()
-    text_rect.bottomleft = (10, ALTURA - 10)
-    window.blit(text_surface, text_rect)
-    #Dracula
-    text_surface = assets[SCORE_FONT].render(chr(9829) * boss_health, True, BLACK)
-    text_rect = text_surface.get_rect()
-    text_rect.bottomright = (10, 10 - ALTURA)
-    window.blit(text_surface, text_rect)
+        #Desenha as barras de vida
+        #Heroi
+        text_surface = assets[SCORE_FONT].render(chr(9829) * hero_health, True, RED)
+        text_rect = text_surface.get_rect()
+        text_rect.bottomleft = (10, ALTURA - 10)
+        window.blit(text_surface, text_rect)
+        #Dracula
+        text_surface = assets[SCORE_FONT].render(chr(9829) * boss_health, True, BLACK)
+        text_rect = text_surface.get_rect()
+        text_rect.bottomright = (10, 10 - ALTURA)
+        window.blit(text_surface, text_rect)
 
-    pygame.display.update() # Atuliza o novo frame
+        pygame.display.update() # Atualiza o novo frame
 
-    return state
-                    
+            
