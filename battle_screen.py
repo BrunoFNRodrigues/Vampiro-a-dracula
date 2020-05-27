@@ -29,7 +29,7 @@ def battle_screen(window):
     PLAYING = 1
     WIN = True
     state = PLAYING
-
+    SUA_VEZ = True
     keys_down = {}
     guard = False
 
@@ -45,25 +45,35 @@ def battle_screen(window):
                 state = DONE
             #Só verifica o teclado se está no estado
             if state == PLAYING:
-                #Verifica se apertou alguma tecla.
-                if event.type == pygame.KEYDOWN:
-                    #Seleciona opções no menu de combate
-                    keys_down[event.key] = True
-                    #Define a função de ataque
-                    if event.key == pygame.K_1:
-                        player.attack()
-                        boss.health -= player.damage
-                    #Define a ação de defender
-                    if event.key == pygame.K_2:
-                        guard = True
-                    #Define a ação de usar cura
-                    if event.key == pygame.K_3:
-                        if player.health<100:
-                            player.health += 5+(randint(0,10))
-                    #Define a ação de fugir
-                    if event.key == pygame.K_4:
-                        state = DONE
-                        WIN = False
+                #Verifica se turno do jogador
+                if SUA_VEZ:
+                    #Verifica se apertou alguma tecla.
+                    if event.type == pygame.KEYDOWN:
+                        #Seleciona opções no menu de combate
+                        keys_down[event.key] = True
+                        #Define a função de ataque
+                        if event.key == pygame.K_1:
+                            player.attack()
+                            boss.health -= player.damage
+                            SUA_VEZ = False
+                        #Define a ação de defender
+                        if event.key == pygame.K_2:
+                            guard = True
+                            SUA_VEZ = False
+                        #Define a ação de usar cura
+                        if event.key == pygame.K_3:
+                            if player.health<100:
+                                player.health += (random.randint(5,10))
+                                SUA_VEZ = False
+                        #Define a ação de fugir
+                        if event.key == pygame.K_4:
+                            WIN = False
+                            state = DONE
+                else:
+                    pygame.time.delay(500)
+                    boss.attack()
+                    player.health -= boss.damage
+                    SUA_VEZ = True            
 
     #======Atualiza o estado do jogo=======
     #Atualiza os status dos personagens
@@ -71,13 +81,13 @@ def battle_screen(window):
 
         if state == PLAYING:
             #Verifica se player morreu
-            if player.health == 0:
+            if player.health < 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
                 WIN = False
                 state = DONE
             #Verifica se chefão morreu
-            if boss.health == 0:
+            if boss.health < 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
                 WIN = True
@@ -89,16 +99,16 @@ def battle_screen(window):
         #Desenhando os personagens
         all_sprites.draw(window)
 
-        #Desenha as barras de vida
+        #Desenha a vida
         #Heroi
-        text_surface = assets[SCORE_FONT].render(chr(9829) * player.health, True, RED)
+        text_surface = assets[SCORE_FONT].render("{:03}".format(player.health), True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (100, ALTURA - 10)
         window.blit(text_surface, text_rect)
         #Dracula
-        text_surface = assets[SCORE_FONT].render(chr(9829) * boss.health, True, GREY)
+        text_surface = assets[SCORE_FONT].render("{:03}".format(boss.health), True, GREY)
         text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (10, ALTURA - 30)
+        text_rect.bottomleft = (100, ALTURA - 50)
         window.blit(text_surface, text_rect)
 
         pygame.display.update() # Atualiza o novo frame
