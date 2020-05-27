@@ -31,3 +31,8 @@ class Boss(pygame.sprite.Sprite):
        self.rect.right = LARGURA*3 / 4
        self.rect.top = 20
        self.health = 200
+       self.assets = assets
+    def attack(self):
+        #Gera o dano do ataque
+        self.damage = 15
+        self.assets[DAMAGING_SOUND].play()
