@@ -4,13 +4,13 @@ b. troca de cenario
 c. menu
 d. hitbox dos objetos
 e. COMBATE:
-1. ataque #ideia de chance de acerto
-1.1 dano variavel 📍
-2. defesa #ideia de chance de defesa 📍
-3. barra de vida no combate 🧛
-4. inimigo estatico 🧛
-5. Turnos
-6.Organizar os elementos visuais
+e1. ataque #ideia de chance de acerto
+e1.1. dano variavel 🧛
+e2. defesa #ideia de chance de defesa 📍
+e3. barra de vida no combate 🧛
+e4. inimigo estatico 🧛
+e5. Turnos 🧛
+e6.Organizar os elementos visuais
 f. vida exploraçao
 g. DIALOGO:
 g¹. gatilho de dialogo 
@@ -20,6 +20,8 @@ a. animaçao do protagonista
 b. animaçao do inimigo
 c. animaçao dos golpes
 d. animaçao do cenario
+
+3.Telas adcionais:
 
 Em progresso: Paulo:📌 Bruno:📍
 Feito: 🧛
