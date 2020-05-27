@@ -1,7 +1,7 @@
 #-------INCIANDO---------
 #Importa e incia as biblietecas
 import pygame
-import random
+import random 
 from config import *
 from assets import *
 from sprites import *
@@ -22,17 +22,15 @@ def battle_screen(window):
     #Criando o Boss
     boss = Boss(assets)
     all_sprites.add(boss)
+    #
+   
     
-    WIN = 0
+    DONE = 0
     PLAYING = 1
-    LOSE = 2
-    DONE = 3
-    result = 0
+    WIN = True
     state = PLAYING
 
     keys_down = {}
-    hero_health = 100
-    boss_health = 300
     guard = False
 
     #======Ciclo principal=======
@@ -53,19 +51,19 @@ def battle_screen(window):
                     keys_down[event.key] = True
                     #Define a função de ataque
                     if event.key == pygame.K_1:
-                        damage = 10+random.randint(1,15)
-                        boss_health -= damage
+                        player.attack()
+                        boss.health -= player.damage
                     #Define a ação de defender
                     if event.key == pygame.K_2:
                         guard = True
                     #Define a ação de usar cura
                     if event.key == pygame.K_3:
-                        if hero_health<100:
-                            hero_health += 5+random.randint(0,10)
+                        if player.health<100:
+                            player.health += 5+(randint(0,10))
                     #Define a ação de fugir
                     if event.key == pygame.K_4:
                         state = DONE
-                        result = LOSE
+                        WIN = False
 
     #======Atualiza o estado do jogo=======
     #Atualiza os status dos personagens
@@ -73,16 +71,17 @@ def battle_screen(window):
 
         if state == PLAYING:
             #Verifica se player morreu
-            if hero_health == 0:
+            if player.health == 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                state = LOSE
+                WIN = False
+                state = DONE
             #Verifica se chefão morreu
-            if boss_health == 0:
+            if boss.health == 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                state = WIN
-            
+                WIN = True
+                state = DONE
 
         #====Gera saídas=====
         window.fill(BLACK) #Preenche com a cor preta
@@ -92,12 +91,12 @@ def battle_screen(window):
 
         #Desenha as barras de vida
         #Heroi
-        text_surface = assets[SCORE_FONT].render(chr(9829) * hero_health, True, RED)
+        text_surface = assets[SCORE_FONT].render(chr(9829) * player.health, True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (10, ALTURA - 10)
         window.blit(text_surface, text_rect)
         #Dracula
-        text_surface = assets[SCORE_FONT].render(chr(9829) * boss_health, True, BLACK)
+        text_surface = assets[SCORE_FONT].render(chr(9829) * boss.health, True, BLACK)
         text_rect = text_surface.get_rect()
         text_rect.bottomright = (10, 10 - ALTURA)
         window.blit(text_surface, text_rect)
