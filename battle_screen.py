@@ -93,12 +93,12 @@ def battle_screen(window):
         #Heroi
         text_surface = assets[SCORE_FONT].render(chr(9829) * player.health, True, RED)
         text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (10, ALTURA - 10)
+        text_rect.bottomleft = (100, ALTURA - 10)
         window.blit(text_surface, text_rect)
         #Dracula
-        text_surface = assets[SCORE_FONT].render(chr(9829) * boss.health, True, BLACK)
+        text_surface = assets[SCORE_FONT].render(chr(9829) * boss.health, True, GREY)
         text_rect = text_surface.get_rect()
-        text_rect.bottomright = (10, 10 - ALTURA)
+        text_rect.bottomleft = (10, ALTURA - 30)
         window.blit(text_surface, text_rect)
 
         pygame.display.update() # Atualiza o novo frame
