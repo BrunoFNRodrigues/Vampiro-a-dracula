@@ -17,15 +17,16 @@ FPS = 60 # Taxa de atualização em frames por segundo
 #=====Tamanho dos elementos=====
 
 #Heroi
-HEROI_ALTURA = 100
-HEROI_LARGURA = 50
+HEROI_ALTURA = 200
+HEROI_LARGURA = 100
 
 #Drácula
-DRACULA_ALTURA = 150
-DRACULA_LARGURA = 75
+DRACULA_ALTURA = 300
+DRACULA_LARGURA = 150
 
 #Cores
 BLACK = (0,0,0)
+GREY = (30,30,30)
 RED = (255,0,0)
 
 #Estados de jogo
