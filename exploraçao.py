@@ -1,49 +1,52 @@
 import pygame
+from sprites import *
+from assets import *
+from config import *
+from Jogo import *
 
-branco=(255,255,255)
-preto=(0,0,0)
+def exploracao_screen(fundo):
+    clock = pygame.time.Clock()
 
+    assets = load_assets()
 
-largura=1100
-altura=720
-tamanho = 20
-pos_x=largura/2
-pos_y=altura/2
+    all_sprites = pygame.sprite.Group()
+    groups = {}
+    groups['all_sprites'] = all_sprites
+    
+    #Criando o jagador
+    player = Hero(groups, assets)
+    all_sprites.add(player)
+    
+    tamanho = 20
+    pos_x=LARGURA/2
+    pos_y=ALTURA/2
 
-fundo = pygame.display.set_mode((largura,altura))
-pygame.display.set_caption('Dracula Adventure')
+    sair = True
 
-sair = True
-
-while sair:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sair = False
-        if event.type == pygame.KEYDOWN:
-            keys_down[event.key] = True
-            if event.key == pygame.K_a:
-                pos_x-=15
-            if event.key == pygame.K_d:
-                pos_x+=15
-            if event.key == pygame.K_w:
-                pos_y-=15
-            if event.key == pygame.K_s:
-                pos_y+=15
-        if event.type == pygame.KEYUP:
-            if event.key in keys_down and keys_down[event.key]:
+    while sair:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sair = False
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    player.speedx += 15
+                    player.velocidade_y = 0
+                    player.velocidade_x-=0.5
                 if event.key == pygame.K_d:
-                    player.speedx -= 15
+                    player.velocidade_y=0
+                    player.velocidade_x=0.5
                 if event.key == pygame.K_w:
-                    player.speedx += 15
+                    player.velocidade_x=0
+                    player.velocidade_y=-0.5
                 if event.key == pygame.K_s:
-                    player.speedx -= 15
+                    player.velocidade_x=0
+                    player.velocidade_y=0.5
+            
+        fundo.fill(BLACK)
+        pygame.draw.rect(fundo, WHITE, [pos_x,pos_y,tamanho,tamanho])
+        pos_x+=player.velocidade_x
+        pos_y+=player.velocidade_y
+        pygame.display.update()
+    
+        all_sprites.update()
 
-    fundo.fill(preto)
-    pygame.draw.rect(fundo, branco, [pos_x,pos_y,tamanho,tamanho])
-        
-    pygame.display.update()
-
-pygame.quit()
 
