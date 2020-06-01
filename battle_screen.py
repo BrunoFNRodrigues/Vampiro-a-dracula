@@ -63,7 +63,7 @@ def battle_screen(window):
                         #Define a ação de usar cura
                         if event.key == pygame.K_3:
                             if player.health<100:
-                                player.health += (random.randint(5,10))
+                                player.health += (random.randint(5,15))
                                 SUA_VEZ = False
                         #Define a ação de fugir
                         if event.key == pygame.K_4:
@@ -72,7 +72,14 @@ def battle_screen(window):
                 else:
                     pygame.time.delay(500)
                     boss.attack()
-                    player.health -= boss.damage
+                    if guard:
+                        guard = False
+                        damage= boss.damage-10
+                        if damage < 0:
+                            damage = 0
+                    else:
+                        damage = boss.damage
+                    player.health -= damage
                     SUA_VEZ = True            
 
     #======Atualiza o estado do jogo=======
@@ -81,13 +88,13 @@ def battle_screen(window):
 
         if state == PLAYING:
             #Verifica se player morreu
-            if player.health < 0:
+            if player.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
                 WIN = False
                 state = DONE
             #Verifica se chefão morreu
-            if boss.health < 0:
+            if boss.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
                 WIN = True
