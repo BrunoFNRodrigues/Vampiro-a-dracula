@@ -4,6 +4,7 @@ import  pygame
 import random
 from config import *
 from battle_screen import battle_screen
+from exploraçao import exploracao_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -15,7 +16,7 @@ pygame.display.set_caption('Vampiro a Dracula')
 state = BATTLE
 while state != QUIT:
     if state == BATTLE:
-        state = battle_screen(window)
+        state = exploracao_screen(window)
     else:
         state = QUIT
 
