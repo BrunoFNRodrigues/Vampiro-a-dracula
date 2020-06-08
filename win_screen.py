@@ -7,7 +7,7 @@ from sprites import *
 
 def win_screen(window):
     #Variveis de ajuste
-    cloak = pygame.time.Clock()
+    clock = pygame.time.Clock()
 
     assets = load_assets()
 
@@ -24,5 +24,15 @@ def win_screen(window):
         for event in pygame.event.get():
             #Verifica se foi fechado
             if event.type == pygame.QUIT:
-                state = 
+                state = QUIT
+                running = False
+
+        #Redesenha a tela
+        window.fill(GREY)
+        window.blit(background, background_rect)
+
+        pygame.display.update()
+
+    return state
+            
 

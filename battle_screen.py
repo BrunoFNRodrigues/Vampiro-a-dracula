@@ -28,7 +28,6 @@ def battle_screen(window):
     
     DONE = 0
     PLAYING = 1
-    WIN = True
     state = PLAYING
     SUA_VEZ = True
     keys_down = {}
@@ -68,7 +67,7 @@ def battle_screen(window):
                                 SUA_VEZ = False
                         #Define a ação de fugir
                         if event.key == pygame.K_4:
-                            WIN = False
+                            return OVER
                             state = DONE
                 else:
                     #Vez do chefe
@@ -93,13 +92,13 @@ def battle_screen(window):
             if player.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                WIN = False
+                return WIN
                 state = DONE
             #Verifica se chefão morreu
             if boss.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                WIN = True
+                return WIN
                 state = DONE
 
         #====Gera saídas=====
