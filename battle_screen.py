@@ -22,7 +22,8 @@ def battle_screen(window):
     #Criando o Boss
     boss = Boss(assets)
     all_sprites.add(boss)
-    #
+    #Escolhe o modo do heroi
+    player.lutando = True
    
     
     DONE = 0
@@ -32,7 +33,7 @@ def battle_screen(window):
     SUA_VEZ = True
     keys_down = {}
     guard = False
-
+    
     #======Ciclo principal=======
     pygame.mixer.music.play(loops=-1)
     while state != DONE:
@@ -120,4 +121,4 @@ def battle_screen(window):
 
         pygame.display.update() # Atualiza o novo frame
 
-            
+    return state        
