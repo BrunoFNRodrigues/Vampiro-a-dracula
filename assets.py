@@ -3,6 +3,7 @@ import os
 from config import *
 
 BACKGROUND = 'background'
+WINBACK = 'winback'
 HEROI_IMG = 'heroi_img'
 DRACULA_IMG = 'dracula_img'
 SCORE_FONT = 'score_font'
@@ -15,6 +16,8 @@ def load_assets():
     assets = {}
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'Castle.png')).convert()
     assets[BACKGROUND] = pygame.transform.scale(assets['background'], (LARGURA, ALTURA))
+    assets[WINBACK] = pygame.image.load(path.join(IMG_DIR, 'win.png')).convert()
+    assets[WINBACK] = pygame.transform.scale(assets['winback'], (LARGURA, ALTURA))
     assets[HEROI_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Heroi.png')).convert_alpha()
     assets[HEROI_IMG] = pygame.transform.scale(assets['heroi_img'], (HEROI_LARGURA, HEROI_ALTURA))
     assets[DRACULA_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'vampire.png')).convert_alpha()

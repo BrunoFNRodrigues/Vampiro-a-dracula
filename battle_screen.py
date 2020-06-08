@@ -71,6 +71,7 @@ def battle_screen(window):
                             WIN = False
                             state = DONE
                 else:
+                    #Vez do chefe
                     pygame.time.delay(500)
                     boss.attack()
                     if guard:

@@ -38,4 +38,5 @@ INIT = 0
 GAME = 1
 BATTLE = 2
 OVER = 3
-QUIT = 4
+WIN = 4
+QUIT = 5
