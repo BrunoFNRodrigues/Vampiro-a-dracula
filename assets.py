@@ -13,7 +13,7 @@ HEROI2_IMG = 'heroi2_img'
 
 def load_assets():
     assets = {}
-    assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'cthulhu.jpg')).convert()
+    assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'Castle.png')).convert()
     assets[BACKGROUND] = pygame.transform.scale(assets['background'], (LARGURA, ALTURA))
     assets[HEROI_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'Heroi.png')).convert_alpha()
     assets[HEROI_IMG] = pygame.transform.scale(assets['heroi_img'], (HEROI_LARGURA, HEROI_ALTURA))

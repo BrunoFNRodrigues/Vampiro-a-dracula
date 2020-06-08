@@ -20,7 +20,7 @@ class Hero(pygame.sprite.Sprite):
             self.image = self.assets[HEROI_IMG]
             self.rect = self.image.get_rect()
             self.rect.centerx = LARGURA / 4
-            self.rect.top = 20
+            self.rect.top = 400
         else:
             self.image = self.assets[HEROI2_IMG]
             self.rect = self.image.get_rect()
@@ -51,8 +51,8 @@ class Boss(pygame.sprite.Sprite):
 
        self.image = assets[DRACULA_IMG]
        self.rect = self.image.get_rect()
-       self.rect.right = LARGURA*3 / 4
-       self.rect.top = 20
+       self.rect.right = LARGURA*2.9 / 4
+       self.rect.top = 350
        self.health = 200
        self.assets = assets
     def attack(self):
