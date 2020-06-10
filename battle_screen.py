@@ -22,17 +22,17 @@ def battle_screen(window):
     #Criando o Boss
     boss = Boss(assets)
     all_sprites.add(boss)
-    #
+    #Escolhe o modo do heroi
+    player.lutando = True
    
     
     DONE = 0
     PLAYING = 1
-    WIN = True
     state = PLAYING
     SUA_VEZ = True
     keys_down = {}
     guard = False
-
+    
     #======Ciclo principal=======
     pygame.mixer.music.play(loops=-1)
     while state != DONE:
@@ -67,9 +67,10 @@ def battle_screen(window):
                                 SUA_VEZ = False
                         #Define a ação de fugir
                         if event.key == pygame.K_4:
-                            WIN = False
+                            return OVER
                             state = DONE
                 else:
+                    #Vez do chefe
                     pygame.time.delay(500)
                     boss.attack()
                     if guard:
@@ -91,13 +92,13 @@ def battle_screen(window):
             if player.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                WIN = False
+                return WIN
                 state = DONE
             #Verifica se chefão morreu
             if boss.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
-                WIN = True
+                return WIN
                 state = DONE
 
         #====Gera saídas=====
@@ -110,14 +111,14 @@ def battle_screen(window):
         #Heroi
         text_surface = assets[SCORE_FONT].render("{:03}".format(player.health), True, RED)
         text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (100, ALTURA - 10)
+        text_rect.bottomleft = (player.rect.centerx, player.rect.top)
         window.blit(text_surface, text_rect)
         #Dracula
-        text_surface = assets[SCORE_FONT].render("{:03}".format(boss.health), True, GREY)
+        text_surface = assets[SCORE_FONT].render("{:03}".format(boss.health), True, WHITE)
         text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (100, ALTURA - 50)
+        text_rect.bottomleft = (boss.rect.right, boss.rect.top)
         window.blit(text_surface, text_rect)
 
         pygame.display.update() # Atualiza o novo frame
 
-            
+    return state       
