@@ -41,7 +41,7 @@ class Hero(pygame.sprite.Sprite):
 
     def attack(self):
         #Gera o dano do ataque 
-        self.damage = random.randint(5,15) #ERRO AO DEFINIR DANO ALEATÓRIO
+        self.damage = random.randint(15,19) #ERRO AO DEFINIR DANO ALEATÓRIO
         self.assets[DAMAGING_SOUND].play()
 
 class Boss(pygame.sprite.Sprite):
