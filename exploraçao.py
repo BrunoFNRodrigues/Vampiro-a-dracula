@@ -26,6 +26,7 @@ def exploracao_screen(fundo):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sair = False
+            # verifica se apertou alguma tecla.
             if event.type == pygame.KEYDOWN:
                 keys_dowm[event.key] = True
                 if event.key == pygame.K_a:
@@ -40,7 +41,6 @@ def exploracao_screen(fundo):
         fundo.fill(BLACK)
         
         #Desenha a vida do Heroi:
-
         text_surface = assets[SCORE_FONT].render(chr(9829)*5, True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (100, ALTURA - 670)
