@@ -39,6 +39,13 @@ def exploracao_screen(fundo):
             
         fundo.fill(BLACK)
         
+        #Desenha a vida do Heroi:
+
+        text_surface = assets[SCORE_FONT].render(chr(9829)*5, True, RED)
+        text_rect = text_surface.get_rect()
+        text_rect.bottomleft = (100, ALTURA - 670)
+        fundo.blit(text_surface, text_rect)
+
         all_sprites.update()
         all_sprites.draw(fundo)
         pygame.display.update()
