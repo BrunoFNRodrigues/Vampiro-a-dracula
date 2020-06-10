@@ -15,10 +15,12 @@ def over_screen(window):
     background = assets[OVERBACK]
     background_rect = background.get_rect()
 
+    assets[LOSE_MUSIC].play()
     running = True
     while running:
         #Velocidade do jogo
         clock.tick(FPS)
+
 
         #Trata eventos
         for event in pygame.event.get():
