@@ -60,8 +60,11 @@ def exploracao_screen(fundo):
 
         all_sprites.update()
         fundo.fill(BLACK)
-        #Desenha a vida do Heroi:
-        text_surface = assets[SCORE_FONT].render(chr(9829)*5, True, RED)
+        
+        #Desenha a vida do Heroi:]
+        vida_coracao = player.health/20
+        vida_coracao = int(vida_coracao)
+        text_surface = assets[SCORE_FONT].render(chr(9829)*vida_coracao, True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (100, ALTURA - 670)
         fundo.blit(text_surface, text_rect)

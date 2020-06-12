@@ -15,6 +15,8 @@ LOSE_MUSIC = 'lose_music'
 WIN_MUSIC = 'win_music'
 
 
+som_tela_inicial = 'som_tela_inicial'
+
 def load_assets():
     assets = {}
     #Carrega as imagens do jogo
@@ -39,5 +41,7 @@ def load_assets():
     assets[LOSE_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'lose.ogg'))
     assets[WIN_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'win.ogg'))
 
+
+    assets[som_tela_inicial] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'exploração.wav'))
 
     return assets
