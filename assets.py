@@ -13,6 +13,8 @@ DAMAGING_SOUND = 'damaging_sound'
 HEROI2_IMG = 'heroi2_img'
 
 
+som_tela_inicial = 'som_tela_inicial'
+
 def load_assets():
     assets = {}
     #Carrega as imagens do jogo
@@ -35,5 +37,7 @@ def load_assets():
     assets[DYING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
     assets[DAMAGING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
     
+
+    assets[som_tela_inicial] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'exploração.wav'))
 
     return assets
