@@ -15,7 +15,6 @@ class Hero(pygame.sprite.Sprite):
         self.health = 100
         self.velocidade_x=0
         self.velocidade_y=0
-    def update(self):
         if self.lutando:
             self.image = self.assets[HEROI_IMG]
             self.rect = self.image.get_rect()
@@ -26,6 +25,8 @@ class Hero(pygame.sprite.Sprite):
             self.rect = self.image.get_rect()
             self.rect.centerx = LARGURA/2
             self.rect.centery = ALTURA/2
+    def update(self):
+
         # Atualização da posição do jogador
         self.rect.x += self.velocidade_x
         self.rect.y += self.velocidade_y

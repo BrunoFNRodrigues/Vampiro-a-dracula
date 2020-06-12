@@ -17,35 +17,55 @@ def exploracao_screen(fundo):
     player = Hero(groups, assets)
     all_sprites.add(player)
      
-    keys_dowm = {}
+    DONE = 0
+    PLAYING = 1
+    keys_down = {}
+    state = PLAYING
 
-    sair = True
     player.lutando = False
-    while sair:
+    while state != DONE:
         clock.tick(FPS)
+
+
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
-                sair = False
-            # verifica se apertou alguma tecla.
-            if event.type == pygame.KEYDOWN:
-                keys_dowm[event.key] = True
-                if event.key == pygame.K_a:
-                    player.velocidade_x-=50
-                if event.key == pygame.K_d:
-                    player.velocidade_x +=50
-                if event.key == pygame.K_w:
-                    player.velocidade_y-=50
-                if event.key == pygame.K_s:
-                    player.velocidade_y+=50
+                state = DONE
             
+            if state == PLAYING:
+                # verifica se apertou alguma tecla.
+                if event.type == pygame.KEYDOWN:
+
+                    keys_down[event.key] = True
+                    if event.key == pygame.K_a:
+                        player.velocidade_x -= 8
+                    if event.key == pygame.K_d:
+                        player.velocidade_x  += 8
+                    if event.key == pygame.K_w:
+                        player.velocidade_y -= 8
+                    if event.key == pygame.K_s:
+                        player.velocidade_y  += 8
+                # Verifica se soltou alguma tecla.
+                if event.type == pygame.KEYUP:
+                    # Dependendo da tecla, altera a velocidade.
+                    if event.key in keys_down and keys_down[event.key]:
+                        if event.key == pygame.K_a:
+                            player.velocidade_x += 8
+                        if event.key == pygame.K_d:
+                            player.velocidade_x -= 8
+                        if event.key == pygame.K_w:
+                            player.velocidade_y += 8
+                        if event.key == pygame.K_s:
+                            player.velocidade_y  -= 8    
+
+        all_sprites.update()
         fundo.fill(BLACK)
-        
         #Desenha a vida do Heroi:
         text_surface = assets[SCORE_FONT].render(chr(9829)*5, True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (100, ALTURA - 670)
         fundo.blit(text_surface, text_rect)
 
-        all_sprites.update()
+        
         all_sprites.draw(fundo)
         pygame.display.update()
