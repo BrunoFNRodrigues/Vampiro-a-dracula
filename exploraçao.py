@@ -36,12 +36,14 @@ def exploracao_screen(fundo):
                 if event.key == pygame.K_w:
                     player.velocidade_y-=50
                 if event.key == pygame.K_s:
-                    player.velocidade_y+=50
+                    player.velocidade_y+=50  
             
         fundo.fill(BLACK)
         
-        #Desenha a vida do Heroi:
-        text_surface = assets[SCORE_FONT].render(chr(9829)*5, True, RED)
+        #Desenha a vida do Heroi:]
+        vida_coracao = player.health/20
+        vida_coracao = int(vida_coracao)
+        text_surface = assets[SCORE_FONT].render(chr(9829)*vida_coracao, True, RED)
         text_rect = text_surface.get_rect()
         text_rect.bottomleft = (100, ALTURA - 670)
         fundo.blit(text_surface, text_rect)
