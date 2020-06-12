@@ -7,10 +7,12 @@ WINBACK = 'winback'
 OVERBACK = 'overback'
 HEROI_IMG = 'heroi_img'
 DRACULA_IMG = 'dracula_img'
+HEROI2_IMG = 'heroi2_img'
 SCORE_FONT = 'score_font'
 DYING_SOUND = 'dying_sound'
 DAMAGING_SOUND = 'damaging_sound'
-HEROI2_IMG = 'heroi2_img'
+LOSE_MUSIC = 'lose_music'
+WIN_MUSIC = 'win_music'
 
 
 som_tela_inicial = 'som_tela_inicial'
@@ -35,8 +37,10 @@ def load_assets():
     pygame.mixer.music.load(os.path.join(SOM_DIR, 'Boss_battle.ogg'))
     pygame.mixer.music.set_volume(0.4)
     assets[DYING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
-    assets[DAMAGING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'pew.wav'))
-    
+    assets[DAMAGING_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'expl3.wav'))
+    assets[LOSE_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'lose.ogg'))
+    assets[WIN_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'win.ogg'))
+
 
     assets[som_tela_inicial] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'exploração.wav'))
 

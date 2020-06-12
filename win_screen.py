@@ -15,6 +15,8 @@ def win_screen(window):
     background = assets[WINBACK]
     background_rect = background.get_rect()
 
+    assets[WIN_MUSIC].play()
+
     running = True
     while running:
         #Velocidade do jogo
