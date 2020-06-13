@@ -26,12 +26,12 @@ def exploracao_screen(fundo):
     while state != DONE:
         clock.tick(FPS)
 
-
+        #Trata eventos
         for event in pygame.event.get():
-
+            #Verifica consequências
             if event.type == pygame.QUIT:
                 state = DONE
-            
+            #Só libera o teclado se está jogando
             if state == PLAYING:
                 # verifica se apertou alguma tecla.
                 if event.type == pygame.KEYDOWN:
@@ -45,6 +45,11 @@ def exploracao_screen(fundo):
                         player.velocidade_y -= 8
                     if event.key == pygame.K_s:
                         player.velocidade_y  += 8
+                    if player.rect.right == LARGURA:
+                        if event.key == pygame.K_e:
+                            player.assets[DAMAGING_SOUND].play()
+                            return BATTLE 
+
                 # Verifica se soltou alguma tecla.
                 if event.type == pygame.KEYUP:
                     # Dependendo da tecla, altera a velocidade.
@@ -56,7 +61,8 @@ def exploracao_screen(fundo):
                         if event.key == pygame.K_w:
                             player.velocidade_y += 8
                         if event.key == pygame.K_s:
-                            player.velocidade_y  -= 8    
+                            player.velocidade_y  -= 8
+   
 
         all_sprites.update()
         fundo.fill(BLACK)
@@ -72,3 +78,5 @@ def exploracao_screen(fundo):
         
         all_sprites.draw(fundo)
         pygame.display.update()
+        
+    return state
