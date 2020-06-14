@@ -13,7 +13,7 @@ def exploracao_screen(fundo):
     groups = {}
     groups['all_sprites'] = all_sprites
     
-    #Criando o jagador
+    # Criando o jagador
     player = Hero(groups, assets)
     all_sprites.add(player)
      
@@ -25,12 +25,12 @@ def exploracao_screen(fundo):
     while state != DONE:
         clock.tick(FPS)
 
-        #Trata eventos
+        # Trata eventos
         for event in pygame.event.get():
             #Verifica consequências
             if event.type == pygame.QUIT:
                 return QUIT
-            #Só libera o teclado se está jogando
+            # Só libera o teclado se está jogando
             if state == PLAYING:
                 # verifica se apertou alguma tecla.
                 if event.type == pygame.KEYDOWN:
@@ -64,9 +64,12 @@ def exploracao_screen(fundo):
    
 
         all_sprites.update()
+
+        # desenhando o fundo 
         fundo.fill(BLACK)
+        fundo.blit(assets[BACKGROUND2], (0, 0))
         
-        #Desenha a vida do Heroi:]
+        # Desenha a vida do Heroi:
         vida_coracao = player.health/20
         vida_coracao = int(vida_coracao)
         text_surface = assets[SCORE_FONT].render(chr(9829)*vida_coracao, True, RED)
