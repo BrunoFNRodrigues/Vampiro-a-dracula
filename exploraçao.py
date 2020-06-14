@@ -22,7 +22,6 @@ def exploracao_screen(fundo):
     keys_down = {}
     state = PLAYING
 
-    player.lutando = False
     while state != DONE:
         clock.tick(FPS)
 
@@ -30,7 +29,7 @@ def exploracao_screen(fundo):
         for event in pygame.event.get():
             #Verifica consequências
             if event.type == pygame.QUIT:
-                state = DONE
+                return QUIT
             #Só libera o teclado se está jogando
             if state == PLAYING:
                 # verifica se apertou alguma tecla.

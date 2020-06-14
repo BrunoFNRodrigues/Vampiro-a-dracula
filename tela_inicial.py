@@ -6,6 +6,8 @@ def tela_inicial(fundo):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
     assets = load_assets()
+    #Ajusta o som
+    assets[som_tela_inicial].set_volume(0.3)
     assets[som_tela_inicial].play()
 
     # Carrega o fundo da tela inicial
@@ -27,6 +29,7 @@ def tela_inicial(fundo):
 
             if event.type == pygame.KEYUP:
                 state = GAME
+                assets[som_tela_inicial].stop()
                 running = False
 
         # A cada loop, redesenha o fundo e os sprites

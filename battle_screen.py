@@ -17,13 +17,11 @@ def battle_screen(window):
     groups['all_sprites'] = all_sprites
     
     #Criando o jagador
-    player = Hero(groups, assets)
+    player = Hero2(groups, assets)
     all_sprites.add(player)
     #Criando o Boss
     boss = Boss(assets)
     all_sprites.add(boss)
-    #Escolhe o modo do heroi
-    player.lutando = True
    
     
     DONE = 0
@@ -32,7 +30,7 @@ def battle_screen(window):
     SUA_VEZ = True
     keys_down = {}
     guard = False
-    
+
     #======Ciclo principal=======
     pygame.mixer.music.play(loops=-1)
     while state != DONE:
@@ -67,8 +65,9 @@ def battle_screen(window):
                                 SUA_VEZ = False
                         #Define a ação de fugir
                         if event.key == pygame.K_4:
+                            pygame.mixer.music.stop()
                             return OVER
-                            
+                                   
                 else:
                     #Vez do chefe
                     pygame.time.delay(500)
@@ -92,12 +91,14 @@ def battle_screen(window):
             if player.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
+                pygame.mixer.music.stop()
                 return OVER
                 
             #Verifica se chefão morreu
             if boss.health <= 0:
                 #Toca o som de morte
                 assets[DYING_SOUND].play()
+                pygame.mixer.music.stop()
                 return WIN
                 
 

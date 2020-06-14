@@ -8,23 +8,16 @@ class Hero(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         # Construindo o sprite
         pygame.sprite.Sprite.__init__(self)
-        self.image = 0
-        self.lutando = False
         self.groups = groups
         self.assets = assets
         self.health = 100
         self.velocidade_x=0
         self.velocidade_y=0
-        if self.lutando:
-            self.image = self.assets[HEROI_IMG]
-            self.rect = self.image.get_rect()
-            self.rect.centerx = LARGURA / 4
-            self.rect.top = 400
-        else:
-            self.image = self.assets[HEROI_IMG]
-            self.rect = self.image.get_rect()
-            self.rect.centerx = LARGURA/2
-            self.rect.centery = ALTURA/2
+        self.image = self.assets[HEROI_IMG]
+        self.rect = self.image.get_rect()
+        self.rect.centerx = LARGURA/2
+        self.rect.centery = ALTURA/2
+
     def update(self):
 
         # Atualização da posição do jogador
@@ -40,16 +33,24 @@ class Hero(pygame.sprite.Sprite):
         if self.rect.bottom > ALTURA:
             self.rect.bottom = ALTURA
 
+class Hero2(pygame.sprite.Sprite):
+    def __init__(self, groups, assets):
+        # Construindo o sprite
+        pygame.sprite.Sprite.__init__(self)
+        self.groups = groups
+        self.assets = assets
+        self.health = 100
+        self.velocidade_x=0
+        self.velocidade_y=0
+        self.image = self.assets[HEROI_IMG]
+        self.rect = self.image.get_rect()
+        self.rect.centerx = LARGURA / 4
+        self.rect.top = 400
+
     def attack(self):
         #Gera o dano do ataque 
         self.damage = random.randint(15,19) 
         self.assets[DAMAGING_SOUND].play()
-
-    def door(self):
-        #Verifica se jogador está no lugar certo
-        if self.rect.right == LARGURA:
-            self.assets[DAMAGING_SOUND].play()
-            return BATTLE
 
 class Boss(pygame.sprite.Sprite):
     def __init__(self, assets):
