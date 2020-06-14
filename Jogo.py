@@ -9,6 +9,8 @@ from win_screen import win_screen
 from over_screen import over_screen
 from tela_inicial import tela_inicial
 
+pygame.display.set_icon(pygame.image.load("vampire.png"))
+
 #Define aluste do som
 pygame.mixer.pre_init(44100, 16, 2, 4096)
 pygame.init()
@@ -18,7 +20,7 @@ pygame.mixer.init()
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Vampiro a Dracula')
 
-state = GAME
+state = INIT
 while state != QUIT:
     if state == INIT:
         state = tela_inicial(window)
