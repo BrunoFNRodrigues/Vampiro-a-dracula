@@ -40,3 +40,4 @@ BATTLE = 2
 OVER = 3
 WIN = 4
 QUIT = 5
+COMANDO = 6 

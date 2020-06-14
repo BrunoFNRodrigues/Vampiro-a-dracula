@@ -2,16 +2,12 @@ import pygame
 from config import *
 from assets import *
 
-def tela_inicial(fundo):
+def tela_comandos(fundo):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
     assets = load_assets()
-    #Ajusta o som
-    assets[som_tela_inicial].set_volume(0.3)
-    assets[som_tela_inicial].play()
-
-    # Carrega o fundo da tela inicial
-    inicio = pygame.image.load(path.join(IMG_DIR, 'tela_inicial.png')).convert()
+    # Carrega o fundo da tela dos comandos
+    inicio = pygame.image.load(path.join(IMG_DIR, 'comandos.png')).convert()
    
 
     running = True
@@ -28,12 +24,13 @@ def tela_inicial(fundo):
                 running = False
 
             if event.type == pygame.KEYUP:
-                state = COMANDO
+                state = GAME
+                assets[som_tela_inicial].stop()
                 running = False
 
         # A cada loop, redesenha o fundo e os sprites
         fundo.fill(BLACK)
-        fundo.blit(inicio, (150,100))
+        fundo.blit(inicio, (150,-20))
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()

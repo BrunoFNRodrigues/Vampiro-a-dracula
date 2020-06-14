@@ -8,8 +8,8 @@ from exploraçao import exploracao_screen
 from win_screen import win_screen
 from over_screen import over_screen
 from tela_inicial import tela_inicial
+from tela_comandos import tela_comandos 
 
-pygame.display.set_icon(pygame.image.load("vampire.png"))
 
 #Define aluste do som
 pygame.mixer.pre_init(44100, 16, 2, 4096)
@@ -24,6 +24,8 @@ state = INIT
 while state != QUIT:
     if state == INIT:
         state = tela_inicial(window)
+    elif state == COMANDO:
+        state = tela_comandos(window)
     elif state == GAME:
         state = exploracao_screen(window)
     elif state == BATTLE:
