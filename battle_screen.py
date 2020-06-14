@@ -42,8 +42,8 @@ def battle_screen(window):
         for event in pygame.event.get():
             #Verifica consequências
             if event.type == pygame.QUIT:
-                state = DONE
-            #Só verifica o teclado se está no estado
+                return QUIT
+            #Só libera o teclado se está jogando
             if state == PLAYING:
                 #Verifica se turno do jogador
                 if SUA_VEZ:
