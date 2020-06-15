@@ -12,7 +12,9 @@ def exploracao_screen(fundo):
     all_sprites = pygame.sprite.Group()
     groups = {}
     groups['all_sprites'] = all_sprites
-    
+    #Inicia a música
+    assets[EXP_MUSIC].set_volume(0.3)
+    assets[EXP_MUSIC].play()
     # Criando o jagador
     player = Hero(groups, assets)
     all_sprites.add(player)
@@ -46,7 +48,9 @@ def exploracao_screen(fundo):
                         player.velocidade_y  += 8
                     if player.rect.right == LARGURA:
                         if event.key == pygame.K_e:
-                            player.assets[DAMAGING_SOUND].play()
+                            player.assets[DOOR_SOUND].play()
+                            assets[EXP_MUSIC].stop()
+                            pygame.time.delay(4000)
                             return BATTLE 
 
                 # Verifica se soltou alguma tecla.

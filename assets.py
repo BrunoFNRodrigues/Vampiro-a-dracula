@@ -14,6 +14,8 @@ DAMAGING_SOUND = 'damaging_sound'
 LOSE_MUSIC = 'lose_music'
 WIN_MUSIC = 'win_music'
 HEAL_MUSIC = 'heal_sound'
+EXP_MUSIC = 'exp_music'
+DOOR_SOUND = 'door_sound'
 
 som_tela_inicial = 'som_tela_inicial'
 
@@ -42,8 +44,8 @@ def load_assets():
     assets[LOSE_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'lose.ogg'))
     assets[WIN_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'win.ogg'))
     assets[HEAL_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, '0054.wav'))
-
-
+    assets[EXP_MUSIC] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'Kim Lightyear - My Little Castle (Loop)(Tela_incial).wav'))
     assets[som_tela_inicial] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'exploração.wav'))
+    assets[DOOR_SOUND] = pygame.mixer.Sound(os.path.join(SOM_DIR, 'closing_door.ogg'))
 
     return assets

@@ -25,7 +25,6 @@ def tela_comandos(fundo):
 
             if event.type == pygame.KEYUP:
                 state = GAME
-                assets[som_tela_inicial].stop()
                 running = False
 
         # A cada loop, redesenha o fundo e os sprites
