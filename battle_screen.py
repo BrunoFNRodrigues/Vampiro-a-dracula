@@ -61,8 +61,11 @@ def battle_screen(window):
                         #Define a ação de usar cura
                         if event.key == pygame.K_3:
                             if player.health<100:
+                                assets[HEAL_MUSIC].play()
                                 player.health += (random.randint(10,15))
                                 SUA_VEZ = False
+                                if player.health > 100:
+                                    player.health = 100
                         #Define a ação de fugir
                         if event.key == pygame.K_4:
                             pygame.mixer.music.stop()
