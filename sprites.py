@@ -45,7 +45,7 @@ class Hero2(pygame.sprite.Sprite):
         self.image = self.assets[HEROI_IMG]
         self.rect = self.image.get_rect()
         self.rect.centerx = LARGURA / 4
-        self.rect.top = 400
+        self.rect.top = 445
 
     def attack(self):
         #Gera o dano do ataque 

@@ -17,8 +17,8 @@ FPS = 60 # Taxa de atualização em frames por segundo
 #=====Tamanho dos elementos=====
 
 #Heroi
-HEROI_ALTURA = 200
-HEROI_LARGURA = 100
+HEROI_ALTURA = 145
+HEROI_LARGURA = 145
 
 #Drácula
 DRACULA_ALTURA = 230
