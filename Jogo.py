@@ -2,6 +2,7 @@
 #Importa e inicia pacotes
 import  pygame
 import random
+import os 
 from config import *
 from battle_screen import battle_screen
 from exploraçao import exploracao_screen
@@ -19,6 +20,11 @@ pygame.mixer.init()
 #=====>Gera telas
 window = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption('Vampiro a Dracula')
+#Gera o ícone da aba
+icon = pygame.image.load(os.path.join(IMG_DIR, 'vampire.png')).convert()
+icon = pygame.transform.scale(icon, (32, 32))
+pygame.display.set_icon(icon)
+
 
 state = INIT
 while state != QUIT:
