@@ -30,7 +30,7 @@ def tela_comandos(fundo):
 
         # A cada loop, redesenha o fundo e os sprites
         fundo.fill(BLACK)
-        fundo.blit(inicio, (150,-20))
+        fundo.blit(inicio, (150,-30))
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
