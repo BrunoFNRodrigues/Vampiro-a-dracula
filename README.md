@@ -7,8 +7,7 @@ baixar os arquirvos e executar o arquivo Jogo.py em algum indexador python.
     Paulo Augusto dos Passos Oliveira
 
 # Vídeo de demonstração:
-    link: https://youtu.be/V5WJvdukOiU qualquer problema com o link o vídeo se encontra na pasta assets do projeto
-
+    link: https://youtu.be/V5WJvdukOiU 
 # Sites das imagems utilizaddas:
     https://opengameart.org
     https://www.spriters-resource.com/
