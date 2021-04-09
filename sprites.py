@@ -3,6 +3,9 @@ import random
 from config import *
 from assets import *
 
+class Persongem(pygame.sprite.Sprite):
+    def __init__(self, groups, assets):
+        pygame.sprite.Sprite.__init__(self)
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
