@@ -17,10 +17,10 @@ def battle_screen(window):
     groups['all_sprites'] = all_sprites
     
     #Criando o jagador
-    player = Hero2(groups, assets)
+    player = Hero2(groups, assets, HEROI_IMG, 1)
     all_sprites.add(player)
     #Criando o Boss
-    boss = Boss(assets)
+    boss = Boss(assets, DRACULA_IMG, 2)
     all_sprites.add(boss)
    
     
