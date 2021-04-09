@@ -51,7 +51,7 @@ def battle_screen(window):
                         keys_down[event.key] = True
                         #Define a função de ataque
                         if event.key == pygame.K_1:
-                            player.attack()
+                            player.attack(15,22)
                             boss.health -= player.damage
                             SUA_VEZ = False
                         #Define a ação de defender
@@ -74,7 +74,7 @@ def battle_screen(window):
                 else:
                     #Vez do chefe
                     pygame.time.delay(500)
-                    boss.attack()
+                    boss.attack(1,15)
                     if guard:
                         guard = False
                         damage= boss.damage-10

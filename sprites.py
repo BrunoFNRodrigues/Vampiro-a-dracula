@@ -3,6 +3,7 @@ import random
 from config import *
 from assets import *
 
+
 class Personagem(pygame.sprite.Sprite):
     def __init__(self, assets, img, fator_vida):
         pygame.sprite.Sprite.__init__(self)
@@ -11,7 +12,10 @@ class Personagem(pygame.sprite.Sprite):
         self.health = 100*fator_vida
         self.image = self.assets[img]
         self.rect = self.image.get_rect()
-        
+
+    def attack(self, min, max):
+        self.damage = random.randint(min,max)
+        self.assets[DAMAGING_SOUND].play()
 
 class Hero(Personagem):
     def __init__(self, groups, assets, img, fator_vida):
@@ -48,10 +52,6 @@ class Hero2(Personagem):
         self.rect.centerx = LARGURA / 4
         self.rect.top = 445
 
-    def attack(self):
-        #Gera o dano do ataque 
-        self.damage = random.randint(15,19) 
-        self.assets[DAMAGING_SOUND].play()
 
 class Boss(Personagem):
     def __init__(self, assets, img, fator_vida):
@@ -60,7 +60,5 @@ class Boss(Personagem):
        self.rect.right = LARGURA*2.9 / 4
        self.rect.top = 350
 
-    def attack(self):
-        #Gera o dano do ataque
-        self.damage = random.randint(1,15)
-        self.assets[DAMAGING_SOUND].play()
+
+
