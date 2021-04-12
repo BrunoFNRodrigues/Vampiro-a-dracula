@@ -6,6 +6,12 @@ from config import *
 from assets import *
 from sprites import *
 
+def desenhaVida(assets, personagem, window, cor):
+    text_surface = assets[SCORE_FONT].render("{:03}".format(personagem.health), True, cor)
+    text_rect = text_surface.get_rect()
+    text_rect.bottomleft = (personagem.rect.right, personagem.rect.top)
+    window.blit(text_surface, text_rect)
+
 def battle_screen(window):
     # Variveis de ajuste de velocidade
     clock = pygame.time.Clock()
@@ -17,10 +23,10 @@ def battle_screen(window):
     groups['all_sprites'] = all_sprites
     
     #Criando o jagador
-    player = Hero2(groups, assets)
+    player = Hero2(groups, assets, HEROI_IMG, 1)
     all_sprites.add(player)
     #Criando o Boss
-    boss = Boss(assets)
+    boss = Boss(assets, DRACULA_IMG, 2)
     all_sprites.add(boss)
    
     
@@ -51,7 +57,7 @@ def battle_screen(window):
                         keys_down[event.key] = True
                         #Define a função de ataque
                         if event.key == pygame.K_1:
-                            player.attack()
+                            player.attack(15,22)
                             boss.health -= player.damage
                             SUA_VEZ = False
                         #Define a ação de defender
@@ -74,7 +80,7 @@ def battle_screen(window):
                 else:
                     #Vez do chefe
                     pygame.time.delay(500)
-                    boss.attack()
+                    boss.attack(1,15)
                     if guard:
                         guard = False
                         damage= boss.damage-10
@@ -89,6 +95,7 @@ def battle_screen(window):
     #Atualiza os status dos personagens
         all_sprites.update()
 
+        #Checa status dos personagens(Pode ser extraido)
         if state == PLAYING:
             #Verifica se player morreu
             if player.health <= 0:
@@ -104,25 +111,21 @@ def battle_screen(window):
                 pygame.mixer.music.stop()
                 return WIN
                 
-
         #====Gera saídas=====
         window.fill(BLACK) #Preenche com a cor preta
         window.blit(assets[BACKGROUND], (0, 0))
         #Desenhando os personagens
         all_sprites.draw(window)
 
-        #Desenha a vida
+        #Desenha a vida(Pode ser extraido)
         #Heroi
-        text_surface = assets[SCORE_FONT].render("{:03}".format(player.health), True, RED)
-        text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (player.rect.centerx, player.rect.top)
-        window.blit(text_surface, text_rect)
+        desenhaVida(assets, player, window, WHITE)
+
         #Dracula
-        text_surface = assets[SCORE_FONT].render("{:03}".format(boss.health), True, WHITE)
-        text_rect = text_surface.get_rect()
-        text_rect.bottomleft = (boss.rect.right, boss.rect.top)
-        window.blit(text_surface, text_rect)
+        desenhaVida(assets, boss, window, RED)
 
         pygame.display.update() # Atualiza o novo frame
 
-    return state       
+    return state
+
+

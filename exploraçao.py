@@ -16,9 +16,9 @@ def exploracao_screen(fundo):
     assets[EXP_MUSIC].set_volume(0.3)
     assets[EXP_MUSIC].play()
     # Criando o jagador
-    player = Hero(groups, assets)
+    player = Hero(groups, assets, HEROI_IMG, 1)
     all_sprites.add(player)
-     
+    
     DONE = 0
     PLAYING = 1
     keys_down = {}
